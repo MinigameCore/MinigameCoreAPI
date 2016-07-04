@@ -1,0 +1,28 @@
+import java.time.LocalDate
+
+license {
+    ext {
+        name = project.name
+        organization = project.organization
+        url = project.url
+        inceptionYear = '2016'
+        currentYear = LocalDate.now().getYear();
+    }
+
+    header = file('gradle/HEADER.txt')
+    include '**/*.java'
+}
+
+dependencies {
+    compile 'org.spongepowered:spongeapi:'+project.spongeapi
+
+    testCompile 'junit:junit:4.12'
+}
+
+spotless {
+    java {
+        importOrderFile '../spotless/order.importorder'
+        eclipseFormatFile '../spotless/formatter.xml'
+        custom 'Long literal fix', { it.replaceAll('([0-9_]+) [Ll]', '$1L') }
+    }
+}
