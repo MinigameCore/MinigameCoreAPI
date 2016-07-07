@@ -20,53 +20,7 @@ don't work as expected`.
 Like to contribute some code? You are welcome! Just make sure you are aware of some things.
 
 #### Code Style
-We tend to follow the [Sponge Code Conventions](https://docs.spongepowered.org/master/en/contributing/implementation/codestyle.html) but some of
-the more important things to note, including changes are:
-
-* Line endings
-    * Use Unix line endings when committing (\n).
-    * Windows users of git can do `git config --global core.autocrlf true` to let git convert them automatically.
-
-* Column width
-    * 150 for Javadocs
-    * 120 for code
-    * Feel free to wrap when it will help with readability
-
-* Indentation
-    * Use 4 spaces for indentations, do not use tabs.
-
-* File headers
-    * File headers must contain the license headers for the project as defined in HEADER.txt.
-    * You can use `gradle licenseFormat` to automatically to do this for you.
-
-* Imports
-    * Imports must be grouped in the following order:
-        * static imports
-        * *blank line*
-        * normal imports
-        * *blank line*
-        * java imports
-        * javax imports
-    * Absolutely no wildcard `*` imports.
-
-* Javadocs
-    * Do not use @author
-    * Wrap additional paragraphs in `<p>` and `</p>`
-    * Capitalize the first letter in the descriptions within each “at clause”, i.e. @param name Player to affect, no
-    periods
-    * Be descriptive when explaining the purpose of the class, interface, enum, method etc.
-
-* Deprecation
-    * Do not deprecate content unless you have a replacement, or if the provided feature is removed.
-    * Be prepared to provide justification for the deprecation.
-    * When deprecating, provide the month and year when it was deprecated.
-
-#### Code Conventions
-* Return `java.util.Optional` if you are adding an API method that could return `null`.
-* Use `@Nonnull` if `null` is not a valid option.
-* Use `@Nullable` if `null` is a valid option.
-* Only one declaration per line.
-* All uppercase letters for a constant variable. Multiple words should be separated with an underscore - `_`.
+MinigameCore follows the [Sponge Code Conventions](https://docs.spongepowered.org/master/en/contributing/implementation/codestyle.html).
 
 #### Submitting your Pull Requests
 In your PRs, please make sure you fulfill the following:
