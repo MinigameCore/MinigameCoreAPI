@@ -39,7 +39,16 @@ import javax.annotation.Nonnull;
  */
 public interface MinigameService {
 
+    /**
+     * Gets the MinigameCore injector.
+     *
+     * <p>
+     *     This is built on top of Sponge's Injector mappings with some of our own provided.
+     * </p>
+     *
+     * @return The {@link Injector}.
+     */
     @Nonnull
-            Injector injector();
+            Injector getInjector();
 
 }
