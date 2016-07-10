@@ -18,3 +18,16 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 }
+
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion = '6.19'
+    configFile = project.file('gradle/checkstyle/checkstyle.xml')
+    configProperties = [
+            'basedir': project.projectDir,
+            'suppressions': project.file('gradle/checkstyle/checkstyle-suppressions.xml'),
+            'severity': 'error'
+    ]
+    showViolations = true
+}
