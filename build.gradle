@@ -34,15 +34,21 @@ tasks.withType(Javadoc) {
                 'https://flowpowered.com/math/',
                 'https://flowpowered.com/noise/',
                 'http://asm.ow2.org/asm50/javadoc/user/',
-                'https://docs.oracle.com/javase/8/docs/api/'
+                'https://docs.oracle.com/javase/8/docs/api/',
+                'https://jd.spongepowered.org'
         )
     }
 }
 
-//spotless {
-//    java {
-//        importOrderFile 'gradle/spotless/order.importorder'
-//        eclipseFormatFile 'gradle/spotless/formatter.xml'
-//        custom 'Long literal fix', { it.replaceAll('([0-9_]+) [Ll]', '$1L') }
-//    }
-//}
+apply plugin: 'checkstyle'
+
+checkstyle {
+    toolVersion = '6.19'
+    configFile = rootProject.file('gradle/checkstyle/checkstyle.xml')
+    configProperties = [
+            'basedir': rootProject.projectDir,
+            'suppressions': rootProject.file('gradle/checkstyle/checkstyle-suppressions.xml'),
+            'severity': 'error'
+    ]
+    showViolations = true
+}
