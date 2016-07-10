@@ -20,6 +20,8 @@ public abstract class ArenaStage {
         this.timeStarted = System.currentTimeMillis();
     }
 
+    public abstract void run();
+
     /**
      * Gets the time remaining for the ArenaStage, in milliseconds.
      *
