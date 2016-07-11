@@ -25,7 +25,6 @@ license {
         currentYear = LocalDate.now().getYear();
     }
 
-    header = file('gradle/HEADER.txt')
     include '**/*.java'
 }
 
