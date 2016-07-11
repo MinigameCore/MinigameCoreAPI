@@ -1,5 +1,21 @@
 import java.time.LocalDate
 
+repositories {
+    mavenCentral()
+    maven {
+        name = 'sponge'
+        url = 'http://repo.spongepowered.org/maven'
+    }
+}
+
+dependencies {
+    compile 'org.spongepowered:spongeapi:' + project.spongeapi
+
+    testCompile 'junit:junit:4.12'
+}
+
+apply plugin: 'net.minecrell.licenser'
+
 license {
     ext {
         name = project.name
@@ -11,12 +27,6 @@ license {
 
     header = file('gradle/HEADER.txt')
     include '**/*.java'
-}
-
-dependencies {
-    compile 'org.spongepowered:spongeapi:' + project.spongeapi
-
-    testCompile 'junit:junit:4.12'
 }
 
 apply plugin: 'checkstyle'
