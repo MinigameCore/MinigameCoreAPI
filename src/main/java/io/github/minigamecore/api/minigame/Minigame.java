@@ -26,6 +26,7 @@
 package io.github.minigamecore.api.minigame;
 
 import io.github.minigamecore.api.data.DataManager;
+import io.github.minigamecore.api.minigame.arena.Arena;
 
 /**
  * Contains logic used to run {@link Arena}s. Each minigame can have multiple

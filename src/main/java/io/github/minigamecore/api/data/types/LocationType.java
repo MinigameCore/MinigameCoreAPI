@@ -27,7 +27,6 @@ package io.github.minigamecore.api.data.types;
 
 import io.github.minigamecore.api.data.DataType;
 import io.github.minigamecore.api.data.InvalidDataException;
-
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.World;

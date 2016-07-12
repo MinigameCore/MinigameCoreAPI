@@ -26,7 +26,6 @@
 package io.github.minigamecore.api.event;
 
 import io.github.minigamecore.api.minigame.arena.Arena;
-
 import org.spongepowered.api.event.Event;
 
 /**
