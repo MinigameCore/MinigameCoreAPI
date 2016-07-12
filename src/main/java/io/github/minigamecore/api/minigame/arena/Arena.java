@@ -23,48 +23,47 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.arena;
+package io.github.minigamecore.api.minigame.arena;
 
-import org.spongepowered.api.CatalogType;
+import io.github.minigamecore.api.minigame.Minigame;
+import org.spongepowered.api.entity.living.player.Player;
 
-import java.io.Serializable;
+import java.util.List;
+import java.util.UUID;
 
 /**
- * Used to indentify which state the arena is currently in.
+ * Represents in-game data for the minigame. There may or may not be multiple
+ * arenas running at once on a server.
  */
-// TODO Create a register module for ArenaState
-public class ArenaState implements Serializable, CatalogType {
-
-    private static final long serialVersionUID = 2918384801722266612L;
-    private String stateName;
+public interface Arena {
 
     /**
-     * An ArenaState is used to identify which state the arena is in.
+     * Gets the minigame the arena is using.
      * 
-     * @param stateName The name of the arena state.
+     * @return The minigame the arena is using.
      */
-    protected ArenaState(String stateName) {
-        this.stateName = stateName;
-    }
+    Minigame getMinigame();
 
     /**
-     * Creates a new arena state using the given name.
+     * Adds a player to the arena. Adding the player may fail for various
+     * reasons.
      * 
-     * @param stateName The name of the arena state.
-     * @return The created arena state.
+     * @param player The player who will attempt to join the arena.
      */
-    public static ArenaState of(String stateName) {
-        return new ArenaState(stateName);
-    }
+    void addPlayer(Player player);
 
-    @Override
-    public String getName() {
-        return this.stateName;
-    }
+    /**
+     * Removes a player from the arena.
+     * 
+     * @param player The player who will leave the arena.
+     */
+    void removePlayer(Player player);
 
-    @Override
-    public String getId() {
-        return "minigamecore:" + this.stateName.toLowerCase().replaceAll(" ", "_");
-    }
+    /**
+     * Gets all players who are in the arena.
+     * 
+     * @return All players who are in the arena.
+     */
+    List<UUID> getPlayers();
 
 }

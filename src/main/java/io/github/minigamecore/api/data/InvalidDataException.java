@@ -23,30 +23,21 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.arena.data.types;
+package io.github.minigamecore.api.data;
 
-import io.github.minigamecore.api.arena.data.DataType;
+/**
+ * Thrown when a {@link String} could not be deserialized into an object.
+ */
+public class InvalidDataException extends RuntimeException {
 
-public class StringType implements DataType<String> {
+    private static final long serialVersionUID = 3176537575932299663L;
 
-    @Override
-    public String getId() {
-        return "minigamecore:string";
+    /**
+     * Thrown when a {@link String} could not be deserialized into an object.
+     * 
+     * @param message An explanation describing why the exception was thrown.
+     */
+    public InvalidDataException(String message) {
+        super(message);
     }
-
-    @Override
-    public String getName() {
-        return "String";
-    }
-
-    @Override
-    public String deserialize(String input) {
-        return input;
-    }
-
-    @Override
-    public String serialize(String input) {
-        return input;
-    }
-
 }

@@ -23,44 +23,32 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.arena;
+package io.github.minigamecore.api.data;
 
-import java.util.Arrays;
-import java.util.List;
+import org.spongepowered.api.CatalogType;
 
 /**
- * Contains all of the default arena states.
+ * Used to save objects to files and databases.
+ * 
+ * @param <T> The type of the object.
  */
-public class ArenaStates {
+//TODO Create a register module for DataType
+public interface DataType<T> extends CatalogType {
 
     /**
-     * Wating for the minimum amount of players to join.
+     * Converts the input string to an object.
+     * 
+     * @param input The string to convert.
+     * @return A object containing the data of the string.
+     * @throws InvalidDataException If the string could not be deserialized.
      */
-    public static final ArenaState LOBBY_WAITING = ArenaState.of("LOBBY_WAITING");
+    T deserialize(String input);
 
     /**
-     * Counting down until the game begins.
+     * Converts the input object to a string.
+     * 
+     * @param input The object to convert.
+     * @return A string representative of the input object.
      */
-    public static final ArenaState LOBBY_COUNTDOWN = ArenaState.of("LOBBY_COUNTDOWN");
-
-    /**
-     * Players are in the arena, waiting for the game to begin.
-     */
-    public static final ArenaState GAME_COUNTDOWN = ArenaState.of("GAME_COUNTDOWN");
-
-    /**
-     * The game is currently in progress.
-     */
-    public static final ArenaState GAME_PLAYING = ArenaState.of("GAME_PLAYING");
-
-    /**
-     * The game has ended and players will return to the lobby.
-     */
-    public static final ArenaState GAME_ENDED = ArenaState.of("GAME_ENDED");
-
-    /**
-     * All of the default arena states.
-     */
-    public static final List<ArenaState> ALL = Arrays.asList(LOBBY_WAITING, LOBBY_COUNTDOWN, GAME_COUNTDOWN, GAME_PLAYING, GAME_ENDED);
-
+    String serialize(T input);
 }

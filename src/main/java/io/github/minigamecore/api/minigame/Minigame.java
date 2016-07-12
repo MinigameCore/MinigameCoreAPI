@@ -23,52 +23,14 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.arena;
+package io.github.minigamecore.api.minigame;
 
-import org.spongepowered.api.entity.living.player.Player;
-
-import java.util.List;
-import java.util.UUID;
+import io.github.minigamecore.api.data.DataManager;
 
 /**
- * Contains information for a minigame arena.
+ * Contains logic used to run {@link Arena}s. Each minigame can have multiple
+ * {@link Arena}s using it.
  */
-public interface Arena {
-
-    /**
-     * Adds a player to the arena. Adding the player may fail for various
-     * reasons.
-     * 
-     * @param player The player who will attempt to join the arena.
-     */
-    void addPlayer(Player player);
-
-    /**
-     * Removes a player from the arena.
-     * 
-     * @param player The player who will leave the arena.
-     */
-    void removePlayer(Player player);
-
-    /**
-     * Gets all players who are in the arena.
-     * 
-     * @return All players who are in the arena.
-     */
-    List<UUID> getPlayers();
-
-    /**
-     * Changes the current {@link ArenaState}.
-     * 
-     * @param arenaState The {@link ArenaState} that the arena will change to.
-     */
-    void changeArenaState(ArenaState arenaState);
-
-    /**
-     * Gets the current {@link ArenaState}.
-     * 
-     * @return The current {@link ArenaState}.
-     */
-    ArenaState getCurrentState();
+public interface Minigame extends DataManager {
 
 }

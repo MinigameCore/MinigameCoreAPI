@@ -23,20 +23,30 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.event;
+package io.github.minigamecore.api.data.types;
 
-import io.github.minigamecore.api.arena.Arena;
-import io.github.minigamecore.api.arena.ArenaState;
+import io.github.minigamecore.api.data.DataType;
 
-/**
- * Fired when the {@link ArenaState} of an {@link Arena} changes.
- */
-public interface ArenaStateChangeEvent extends ArenaEvent {
+public class StringType implements DataType<String> {
 
-    /**
-     * Gets the state that the arena changed to.
-     * 
-     * @return The state that the arena changed to.
-     */
-    ArenaState getNewState();
+    @Override
+    public String getId() {
+        return "minigamecore:string";
+    }
+
+    @Override
+    public String getName() {
+        return "String";
+    }
+
+    @Override
+    public String deserialize(String input) {
+        return input;
+    }
+
+    @Override
+    public String serialize(String input) {
+        return input;
+    }
+
 }

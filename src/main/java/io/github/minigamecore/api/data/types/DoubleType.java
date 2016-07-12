@@ -23,32 +23,30 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.arena.data;
+package io.github.minigamecore.api.data.types;
 
-import org.spongepowered.api.CatalogType;
+import io.github.minigamecore.api.data.DataType;
 
-/**
- * Used to save objects to files and databases.
- * 
- * @param <T> The type of the object.
- */
-//TODO Create a register module for DataType
-public interface DataType<T> extends CatalogType {
+public class DoubleType implements DataType<Double> {
 
-    /**
-     * Converts the input string to an object.
-     * 
-     * @param input The string to convert.
-     * @return A object containing the data of the string.
-     * @throws InvalidDataException If the string could not be deserialized.
-     */
-    T deserialize(String input);
+    @Override
+    public String getId() {
+        return "minigamecore:double";
+    }
 
-    /**
-     * Converts the input object to a string.
-     * 
-     * @param input The object to convert.
-     * @return A string representative of the input object.
-     */
-    String serialize(T input);
+    @Override
+    public String getName() {
+        return "Double";
+    }
+
+    @Override
+    public Double deserialize(String input) {
+        return Double.valueOf(input);
+    }
+
+    @Override
+    public String serialize(Double input) {
+        return input.toString();
+    }
+
 }

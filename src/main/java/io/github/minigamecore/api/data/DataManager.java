@@ -23,21 +23,47 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.arena.data;
+package io.github.minigamecore.api.data;
+
+import java.util.Optional;
 
 /**
- * Thrown when a {@link String} could not be deserialized into an object.
+ * Saves and reads data to the disk.
  */
-public class InvalidDataException extends RuntimeException {
-
-    private static final long serialVersionUID = 3176537575932299663L;
+public interface DataManager {
 
     /**
-     * Thrown when a {@link String} could not be deserialized into an object.
+     * Checks if the key exists in the data file.
      * 
-     * @param message An explanation describing why the exception was thrown.
+     * @param key The key to check for.
+     * @return If the key exists.
      */
-    public InvalidDataException(String message) {
-        super(message);
-    }
+    boolean keyExists(String key);
+
+    /**
+     * Saves the given data to the data file.
+     * 
+     * @param <T> The type of the {@link DataType}.
+     * @param key The key to save the data with.
+     * @param data The data to save.
+     * @param type The type of data.
+     */
+    <T> void saveData(String key, T data, DataType<T> type);
+
+    /**
+     * Loads data from the disk using a key.
+     * 
+     * @param <T> The type of the {@link DataType}.
+     * @param key The key to load the data using.
+     * @param type The type of data that was saved.
+     * @return The loaded data, if present.
+     */
+    <T> Optional<T> loadData(String key, DataType<T> type);
+
+    /**
+     * Gets the id of this {@link DataManager}.
+     * 
+     * @return The id of this {@link DataManager}.
+     */
+    String getId();
 }

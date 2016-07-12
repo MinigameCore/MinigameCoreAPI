@@ -23,47 +23,30 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.arena.data;
+package io.github.minigamecore.api.data.types;
 
-import java.util.Optional;
+import io.github.minigamecore.api.data.DataType;
 
-/**
- * Saves and reads data to the disk.
- */
-public interface DataManager {
+public class BooleanType implements DataType<Boolean> {
 
-    /**
-     * Checks if the key exists in the data file.
-     * 
-     * @param key The key to check for.
-     * @return If the key exists.
-     */
-    boolean keyExists(String key);
+    @Override
+    public String getId() {
+        return "minigamecore:boolean";
+    }
 
-    /**
-     * Saves the given data to the data file.
-     * 
-     * @param <T> The type of the {@link DataType}.
-     * @param key The key to save the data with.
-     * @param data The data to save.
-     * @param type The type of data.
-     */
-    <T> void saveData(String key, T data, DataType<T> type);
+    @Override
+    public String getName() {
+        return "Boolean";
+    }
 
-    /**
-     * Loads data from the disk using a key.
-     * 
-     * @param <T> The type of the {@link DataType}.
-     * @param key The key to load the data using.
-     * @param type The type of data that was saved.
-     * @return The loaded data, if present.
-     */
-    <T> Optional<T> loadData(String key, DataType<T> type);
+    @Override
+    public Boolean deserialize(String input) {
+        return Boolean.valueOf(input);
+    }
 
-    /**
-     * Gets the id of this {@link DataManager}.
-     * 
-     * @return The id of this {@link DataManager}.
-     */
-    String getId();
+    @Override
+    public String serialize(Boolean input) {
+        return input.toString();
+    }
+
 }

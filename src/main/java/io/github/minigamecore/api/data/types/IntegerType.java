@@ -23,29 +23,29 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.arena.data.types;
+package io.github.minigamecore.api.data.types;
 
-import io.github.minigamecore.api.arena.data.DataType;
+import io.github.minigamecore.api.data.DataType;
 
-public class BooleanType implements DataType<Boolean> {
+public class IntegerType implements DataType<Integer> {
 
     @Override
     public String getId() {
-        return "minigamecore:boolean";
+        return "minigamecore:integer";
     }
 
     @Override
     public String getName() {
-        return "Boolean";
+        return "Integer";
     }
 
     @Override
-    public Boolean deserialize(String input) {
-        return Boolean.valueOf(input);
+    public Integer deserialize(String input) {
+        return Integer.valueOf(input);
     }
 
     @Override
-    public String serialize(Boolean input) {
+    public String serialize(Integer input) {
         return input.toString();
     }
 
