@@ -1,46 +1,29 @@
-MinigameCore API
-===
+# MinigameCore
+[![Travis]](https://travis-ci.org/MinigameCore/MinigameCoreAPI)
+[![Docs]](http://minigamecore.github.io/Docs/)
+[![Gitter]](https://gitter.im/MinigameCore/MinigameCore)
+[![Issues]](http://www.github.com/MinigameCore/MinigameCoreAPI/issues/)
+[![JitPack]](http://www.github.com/MinigameCore/MinigameCoreAPI/releases/)
 
-[![License]](https://github.com/MinigameCore/MinigameCoreAPI/tree/master/LICENSE.txt) |
-[![Master]](https://travis-ci.org/MinigameCore/MinigameCoreAPI) |
-[![Bleeding]](https://travis-ci.org/MinigameCore/MinigameCoreAPI)
+MinigameCoreAPI is the API for [MinigameCore](https://github.com/MinigameCore/MinigameCore). MinigameCoreAPI is
+licensed under the [MIT License](https://tldrlegal.com/license/mit-license).
 
-[![Source]](http://www.github.com/MinigameCore/MinigameCoreAPI/) |
-[![Issues]](http://www.github.com/MinigameCore/MinigameCoreAPI/issues/) |
-[![Releases]](http://www.github.com/MinigameCore/MinigameCoreAPI/releases)
+## Cloning
 
-The API for the MinigameCore framework.
+Follow the steps below to ensure your repository is cloned correctly. Note you must first fork the repository before
+cloning.
 
-### Contributions
-Are you a talented programmer wanting to contribute to MinigameCore? Maybe you like to go on a hunt to find and
-squash bugs? Or perhaps you want to help others by providing some documentation. Maybe you have thought a feature that
-would be great for the MinigameCore project? We are all ears.
+1. Run `git clone https://github.com/USERNAME/MinigameCoreAPI.git`
+ - Be sure to replace `USERNAME` with your GitHub username. This will clone your fork to your computer.
 
-* Read our [guidelines].
-* Open an issue with your bugs or feature requests, or a pull request with your changes.
+## Contributing
 
-### Getting and building MinigameCore API
-
-###### Notes
-* You need [Java] 8 and [Git] installed.
-
-To get MinigameCore API source, run the following commands from command prompt or terminal:
-
-1. `git clone git@gitub.com:MinigameCore/MinigameCoreAPI.git`
-2. `cd MinigameCoreAPI`
-
-To build MinigameCore API, go the root of the source directory and run:
-* Windows: `gradlew.bat build`
-* UNIX, Linux, OSX: `./gradlew build`
-
-You will find the compiled JAR, named similar to `MinigameCoreAPI-x.x.x.jar` in `builds/libs/`
+If you would like to contribute code to the MinigameCore project, check out the
+[contributing](http://minigamecore.github.io/Docs/contributing.html) section on our Docs!
 
 [License]: https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat-square
-[Master]: https://img.shields.io/travis/MinigameCore/MinigameCoreAPI/master.svg?style=flat-square
-[Bleeding]: https://img.shields.io/travis/MinigameCore/MinigameCoreAPI/bleeding.svg?style=flat-square
-[Source]: https://img.shields.io/badge/Source-GitHub-brightgreen.svg?style=flat-square
 [Issues]: https://img.shields.io/github/issues/MinigameCore/MinigameCoreAPI.svg?style=flat-square
-[Releases]: https://img.shields.io/github/downloads/MinigameCore/MinigameCoreAPI/total.svg?style=flat-square
-[guidelines]: CONTRIBUTING.md
-[Java]: http://www.oracle.com/technetwork/java/javase/downloads/index.html
-[Git]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+[JitPack]: https://jitpack.io/v/MinigameCore/MinigameCoreAPI.svg?style=flat-square
+[Gitter]: https://img.shields.io/badge/chat-on_gitter-3F51B5.svg?style=flat-square
+[Travis]: https://img.shields.io/travis/MinigameCore/MinigameCoreAPI/master.svg?style=flat-square
+[Docs]: https://img.shields.io/badge/Official-Docs-2196F3.svg?style=flat-square
