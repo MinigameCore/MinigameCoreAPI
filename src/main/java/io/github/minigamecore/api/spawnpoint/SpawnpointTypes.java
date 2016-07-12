@@ -25,27 +25,28 @@
 
 package io.github.minigamecore.api.spawnpoint;
 
-import org.spongepowered.api.world.Location;
-import org.spongepowered.api.world.extent.Extent;
+import static org.spongepowered.api.util.generator.dummy.DummyObjectProvider.createFor;
 
 /**
- * A location where a player can spawn for various stages of a game.
+ * .
  */
-public interface Spawnpoint {
+public final class SpawnpointTypes {
+
+    // SORTFIELDS:ON
 
     /**
-     * Gets the {@link Location} of the spawnpoint.
-     *
-     * @param <E> The {@link Extent}.
-     * @return The location.
+     * .
      */
-    <E extends Extent> Location<E> getLocation();
+    public static final SpawnpointType INITIAL_GAME_SPAWNPOINT = createFor(SpawnpointType.class, "INITIAL_GAME_SPAWNPOINT");
 
-    /**
-     * Gets the {@link SpawnpointType} for the spawnpoint.
-     *
-     * @return The spawnpoint type.
-     */
-    SpawnpointType getSpawnpointType();
+    public static final SpawnpointType LOBBY = createFor(SpawnpointType.class, "LOBBY");
+
+    public static final SpawnpointType SPECTATOR = createFor(SpawnpointType.class, "SPECTATOR");
+
+    // SORTFIELDS:OFF
+
+
+    private SpawnpointTypes() {
+    }
 
 }

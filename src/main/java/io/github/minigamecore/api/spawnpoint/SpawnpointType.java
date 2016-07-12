@@ -25,27 +25,13 @@
 
 package io.github.minigamecore.api.spawnpoint;
 
-import org.spongepowered.api.world.Location;
-import org.spongepowered.api.world.extent.Extent;
+import org.spongepowered.api.CatalogType;
+import org.spongepowered.api.util.annotation.CatalogedBy;
 
 /**
- * A location where a player can spawn for various stages of a game.
+ * .
  */
-public interface Spawnpoint {
-
-    /**
-     * Gets the {@link Location} of the spawnpoint.
-     *
-     * @param <E> The {@link Extent}.
-     * @return The location.
-     */
-    <E extends Extent> Location<E> getLocation();
-
-    /**
-     * Gets the {@link SpawnpointType} for the spawnpoint.
-     *
-     * @return The spawnpoint type.
-     */
-    SpawnpointType getSpawnpointType();
+@CatalogedBy(SpawnpointTypes.class)
+public interface SpawnpointType extends CatalogType {
 
 }
