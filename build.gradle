@@ -16,7 +16,7 @@ apply plugin: 'eclipse'
 
 apply from: 'gradle/shared.gradle'
 
-defaultTasks 'clean', 'build'
+defaultTasks 'build'
 
 task sourceJar(type: Jar) {
     classifier = 'sources'

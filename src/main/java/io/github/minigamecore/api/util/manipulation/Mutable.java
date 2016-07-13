@@ -23,45 +23,27 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.minigame;
+package io.github.minigamecore.api.util.manipulation;
 
-import io.github.minigamecore.api.data.DataManager;
-import io.github.minigamecore.api.minigame.arena.Arena;
-
-import java.util.SortedMap;
+import javax.annotation.Nonnull;
 
 /**
- * Contains logic used to run {@link Arena}s. Each minigame can have multiple
- * {@link Arena}s using it.
+ * Represents a mutable class.
+ *
+ * <p>
+ *     A {@link Mutable} class is complemented by an {@link Immutable} class.
+ * </p>
+ *
+ * @param <I> The {@link Immutable} type.
  */
-public interface Minigame extends DataManager {
+public interface Mutable<I extends Immutable> {
 
     /**
-     * Gets all possible states of the minigame. The states are ordered
-     * ascending by their key.
-     * 
-     * @return All possible states of the minigame
+     * Gets the {@link Immutable} variant of this object.
+     *
+     * @return The mutable variant.
      */
-    SortedMap<Integer, MinigameState> getStates();
-
-    /**
-     * Gets the intial state of the minigame. May return null if no states are
-     * present.
-     * 
-     * @return The initial state of the minigame.
-     */
-    default MinigameState getInitialState() {
-        return getStates().get(getStates().firstKey());
-    }
-
-    /**
-     * Gets the final state of the minigame. May return null if no states are
-     * present.
-     * 
-     * @return The final state of the minigame.
-     */
-    default MinigameState getFinalState() {
-        return getStates().get(getStates().lastKey());
-    }
+    @Nonnull
+    I asImmutable();
 
 }

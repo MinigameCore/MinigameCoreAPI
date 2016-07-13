@@ -23,45 +23,7 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.minigame;
+@ParametersAreNonnullByDefault
+package io.github.minigamecore.api;
 
-import io.github.minigamecore.api.data.DataManager;
-import io.github.minigamecore.api.minigame.arena.Arena;
-
-import java.util.SortedMap;
-
-/**
- * Contains logic used to run {@link Arena}s. Each minigame can have multiple
- * {@link Arena}s using it.
- */
-public interface Minigame extends DataManager {
-
-    /**
-     * Gets all possible states of the minigame. The states are ordered
-     * ascending by their key.
-     * 
-     * @return All possible states of the minigame
-     */
-    SortedMap<Integer, MinigameState> getStates();
-
-    /**
-     * Gets the intial state of the minigame. May return null if no states are
-     * present.
-     * 
-     * @return The initial state of the minigame.
-     */
-    default MinigameState getInitialState() {
-        return getStates().get(getStates().firstKey());
-    }
-
-    /**
-     * Gets the final state of the minigame. May return null if no states are
-     * present.
-     * 
-     * @return The final state of the minigame.
-     */
-    default MinigameState getFinalState() {
-        return getStates().get(getStates().lastKey());
-    }
-
-}
+import javax.annotation.ParametersAreNonnullByDefault;

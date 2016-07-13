@@ -23,45 +23,42 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.minigame;
-
-import io.github.minigamecore.api.data.DataManager;
-import io.github.minigamecore.api.minigame.arena.Arena;
-
-import java.util.SortedMap;
+package io.github.minigamecore.api.util.config;
 
 /**
- * Contains logic used to run {@link Arena}s. Each minigame can have multiple
- * {@link Arena}s using it.
+ * The configuration manager.
+ *
+ * <p>
+ *     This can be used register {@link Configuration}s that you may want Minigame Core to load and save appropriately as needed.
+ * </p>
+ *
+ * <p>
+ *     Any {@link Configuration}s registered here will be reloaded if Minigame Core is reloaded, aswell as saved automatically when server is
+ *     shutting down.
+ * </p>
  */
-public interface Minigame extends DataManager {
+public interface ConfigurationManager {
 
     /**
-     * Gets all possible states of the minigame. The states are ordered
-     * ascending by their key.
-     * 
-     * @return All possible states of the minigame
+     * Registers a {@link Configuration}.
+     *
+     * @param plugin The plugin instance.
+     * @param config The {@link Configuration}.
      */
-    SortedMap<Integer, MinigameState> getStates();
+    void register(Object plugin, Configuration config);
 
     /**
-     * Gets the intial state of the minigame. May return null if no states are
-     * present.
-     * 
-     * @return The initial state of the minigame.
+     * Loads all the {@link Configuration}s registered under the {@code plugin}.
+     *
+     * @param plugin The plugin instance.
      */
-    default MinigameState getInitialState() {
-        return getStates().get(getStates().firstKey());
-    }
+    void load(Object plugin);
 
     /**
-     * Gets the final state of the minigame. May return null if no states are
-     * present.
-     * 
-     * @return The final state of the minigame.
+     * Saves all the {@link Configuration}s registered under the {@code plugin}.
+     *
+     * @param plugin The plugin instance.
      */
-    default MinigameState getFinalState() {
-        return getStates().get(getStates().lastKey());
-    }
+    void save(Object plugin);
 
 }
