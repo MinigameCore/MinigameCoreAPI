@@ -27,19 +27,17 @@ package io.github.minigamecore.api.spawnpoint;
 
 import static org.spongepowered.api.util.generator.dummy.DummyObjectProvider.createFor;
 
-/**
- * .
- */
 public final class SpawnpointTypes {
 
     // SORTFIELDS:ON
 
-    /**
-     * .
-     */
-    public static final SpawnpointType INITIAL_GAME_SPAWNPOINT = createFor(SpawnpointType.class, "INITIAL_GAME_SPAWNPOINT");
+    public static final SpawnpointType DEATH = createFor(SpawnpointType.class, "DEATH");
+
+    public static final SpawnpointType GAME_SPAWN = createFor(SpawnpointType.class, "GAME_SPAWN");
 
     public static final SpawnpointType LOBBY = createFor(SpawnpointType.class, "LOBBY");
+
+    public static final SpawnpointType RESPAWN = createFor(SpawnpointType.class, "RESPAWN");
 
     public static final SpawnpointType SPECTATOR = createFor(SpawnpointType.class, "SPECTATOR");
 
