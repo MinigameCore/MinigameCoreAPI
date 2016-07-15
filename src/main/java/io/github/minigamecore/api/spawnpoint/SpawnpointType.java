@@ -25,18 +25,9 @@
 
 package io.github.minigamecore.api.spawnpoint;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-import static java.util.Arrays.asList;
-import static org.spongepowered.api.scoreboard.Team.builder;
-
 import org.spongepowered.api.CatalogType;
-import org.spongepowered.api.scoreboard.Team;
+import org.spongepowered.api.util.Tristate;
 import org.spongepowered.api.util.annotation.CatalogedBy;
-
-import java.util.Collection;
-import java.util.Optional;
-
-import javax.annotation.Nonnull;
 
 /**
  * .
@@ -47,71 +38,15 @@ public interface SpawnpointType extends CatalogType {
     /**
      * .
      *
-     * @param team "
-     */
-    void addTeam(Team team);
-
-    /**
-     * .
-     *
-     * @param teams "
-     */
-    void addAllTeams(Collection<Team> teams);
-
-    /**
-     * .
-     *
-     * @param teams "
-     */
-    default void addAllTeams(Team[] teams) {
-         checkNotNull(teams, "teams");
-
-         addAllTeams(asList(teams));
-    }
-
-    default boolean containsTeam(String teamName) {
-        return false;
-    }
-
-    default boolean containsTeam(Team team) {
-        return false;
-    }
-
-    /**
-     * .
-     * @param team "
      * @return "
      */
-    default Optional<Team> getTeam(String team) {
-        Team tempTeam = builder().name(team).build();
-
-        if (getTeams().contains(tempTeam)) {
-            return Optional.of(tempTeam);
-        }
-
-        return Optional.empty();
-    }
-
-    /**
-     * .
-     *
-     * @return "
-     */
-    @Nonnull
-    Collection<Team> getTeams();
-
-    /**
-     * .
-     *
-     * @return "
-     */
-    boolean isActive();
+    Tristate active();
 
     /**
      * .
      *
      * @param active "
      */
-    void setActive(boolean active);
+    void setActive(Tristate active);
 
 }

@@ -25,8 +25,16 @@
 
 package io.github.minigamecore.api.spawnpoint;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Arrays.asList;
+
+import org.spongepowered.api.scoreboard.Team;
 import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.extent.Extent;
+
+import java.util.Collection;
+
+import javax.annotation.Nonnull;
 
 /**
  * A location where a player can spawn for various stages of a game.
@@ -47,5 +55,38 @@ public interface Spawnpoint {
      * @return The spawnpoint type.
      */
     SpawnpointType getSpawnpointType();
+
+    /**
+     * .
+     *
+     * @param team "
+     */
+    void addTeam(Team team);
+
+    /**
+     * .
+     *
+     * @param teams "
+     */
+    void addAllTeams(Collection<Team> teams);
+
+    /**
+     * .
+     *
+     * @param teams "
+     */
+    default void addAllTeams(Team[] teams) {
+        checkNotNull(teams, "teams");
+
+        addAllTeams(asList(teams));
+    }
+
+    /**
+     * .
+     *
+     * @return "
+     */
+    @Nonnull
+    Collection<Team> getTeams();
 
 }
