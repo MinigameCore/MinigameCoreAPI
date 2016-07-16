@@ -1,0 +1,9 @@
+task resetTravisFiles {
+
+    def apifile = new File('.travis/apiver.txt')
+    apifile.text = ""
+
+    def sapifile = new File('.travis/sapiver.txt')
+    sapifile.text = ""
+
+}
