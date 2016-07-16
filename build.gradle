@@ -15,8 +15,9 @@ apply plugin: 'idea'
 apply plugin: 'eclipse'
 
 apply from: 'gradle/shared.gradle'
+apply from: 'gradle/api.gradle'
 
-defaultTasks 'clean', 'build'
+defaultTasks 'build', 'resetTravisFiles'
 
 task sourceJar(type: Jar) {
     classifier = 'sources'
