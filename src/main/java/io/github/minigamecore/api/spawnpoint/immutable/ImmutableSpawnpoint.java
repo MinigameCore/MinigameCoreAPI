@@ -23,15 +23,47 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.spawnpoint;
+package io.github.minigamecore.api.spawnpoint.immutable;
 
-import org.spongepowered.api.CatalogType;
-import org.spongepowered.api.util.annotation.CatalogedBy;
+import com.google.common.collect.ImmutableCollection;
+import io.github.minigamecore.api.spawnpoint.Spawnpoint;
+import io.github.minigamecore.api.spawnpoint.SpawnpointType;
+import io.github.minigamecore.api.util.manipulation.Immutable;
+import org.spongepowered.api.scoreboard.Team;
+import org.spongepowered.api.world.Location;
+import org.spongepowered.api.world.extent.Extent;
+
+import javax.annotation.Nonnull;
 
 /**
- * .
+ * A location where a player can spawn for various stages of a game.
  */
-@CatalogedBy(SpawnpointTypes.class)
-public interface SpawnpointType extends CatalogType {
+public interface ImmutableSpawnpoint<E extends Extent> extends Immutable<Spawnpoint> {
+
+    /**
+     * Gets the {@link Location} of the spawnpoint.
+     *
+     * @return The location.
+     */
+    @Nonnull
+    Location<E> getLocation();
+
+    /**
+     * Gets the {@link SpawnpointType} for the spawnpoint.
+     *
+     * @return The spawnpoint type.
+     */
+    @Nonnull
+    SpawnpointType getSpawnpointType();
+
+    /**
+     * .
+     *
+     * @return "
+     */
+    @Nonnull
+    ImmutableCollection<Team> getTeams();
+
+    boolean isActive();
 
 }
