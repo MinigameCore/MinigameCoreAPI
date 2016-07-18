@@ -27,7 +27,7 @@ package io.github.minigamecore.api.spawnpoint.spawnpointtype;
 
 import static org.spongepowered.api.util.generator.dummy.DummyObjectProvider.createFor;
 
-public final class SpawnpointTypes {
+public final class PlayerSpawnpointTypes {
 
     // SORTFIELDS:ON
 
@@ -44,7 +44,7 @@ public final class SpawnpointTypes {
     // SORTFIELDS:OFF
 
 
-    private SpawnpointTypes() {
+    private PlayerSpawnpointTypes() {
     }
 
 }

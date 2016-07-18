@@ -31,7 +31,7 @@ import org.spongepowered.api.util.annotation.CatalogedBy;
 /**
  * .
  */
-@CatalogedBy(SpawnpointTypes.class)
+@CatalogedBy(PlayerSpawnpointTypes.class)
 public interface SpawnpointType extends CatalogType {
 
 }
