@@ -23,9 +23,8 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.spawnpoint.immutable;
+package io.github.minigamecore.api.spawnpoint;
 
-import io.github.minigamecore.api.spawnpoint.Spawnpoint;
 import io.github.minigamecore.api.spawnpoint.spawnpointtype.SpawnpointType;
 import io.github.minigamecore.api.util.manipulation.Immutable;
 import org.spongepowered.api.entity.Transform;
