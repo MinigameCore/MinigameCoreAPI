@@ -25,14 +25,11 @@
 
 package io.github.minigamecore.api.spawnpoint;
 
-import static com.google.common.base.Preconditions.checkNotNull;
-
-import com.flowpowered.math.vector.Vector3d;
-import com.flowpowered.math.vector.Vector3i;
 import io.github.minigamecore.api.spawnpoint.immutable.ImmutableSpawnpoint;
 import io.github.minigamecore.api.util.manipulation.Mutable;
+import org.spongepowered.api.entity.Transform;
 import org.spongepowered.api.scoreboard.Team;
-import org.spongepowered.api.world.Location;
+import org.spongepowered.api.util.Identifiable;
 import org.spongepowered.api.world.extent.Extent;
 
 import java.util.Collection;
@@ -43,11 +40,13 @@ import javax.annotation.Nonnull;
  * .
  * @param <E> .
  */
-public interface Spawnpoint<E extends Extent> extends Mutable<ImmutableSpawnpoint> {
+public interface Spawnpoint<E extends Extent> extends Identifiable, Mutable<ImmutableSpawnpoint> {
 
-    @Nonnull
-    Location<E> getLocation();
-
+    /**
+     * Gets the {@link SpawnpointType} for the spawnpoint.
+     *
+     * @return The spawnpoint type.
+     */
     @Nonnull
     SpawnpointType getSpawnpointType();
 
@@ -59,32 +58,17 @@ public interface Spawnpoint<E extends Extent> extends Mutable<ImmutableSpawnpoin
     @Nonnull
     Collection<Team> getTeams();
 
+    @Nonnull
+    Transform<E> getTransform();
+
     boolean isActive();
 
     void setActive(boolean active);
 
-    void setLocation(E extent, Vector3d position);
+    void setSpawnpointType(@Nonnull SpawnpointType spawnpointType);
 
-    void setLocation(E extent, Vector3i position);
+    void setTeams(@Nonnull Collection<Team> teams);
 
-    default void setLocation(E extent, double x, double y, double z) {
-        checkNotNull(extent, "extent");
-        checkNotNull(x, "x");
-        checkNotNull(y, "y");
-        checkNotNull(z, "z");
-
-        setLocation(extent, new Vector3d(x, y, z));
-    }
-
-    default void setLocation(E extent, int x, int y, int z) {
-        checkNotNull(extent, "extent");
-        checkNotNull(x, "x");
-        checkNotNull(y, "y");
-        checkNotNull(z, "z");
-
-        setLocation(extent, new Vector3i(x, y, z));
-    }
-
-    void setSpawnpointType(SpawnpointType spawnpointType);
+    void setTransform(Transform<E> transform);
 
 }

@@ -25,28 +25,25 @@
 
 package io.github.minigamecore.api.spawnpoint.immutable;
 
-import com.google.common.collect.ImmutableCollection;
 import io.github.minigamecore.api.spawnpoint.Spawnpoint;
 import io.github.minigamecore.api.spawnpoint.SpawnpointType;
 import io.github.minigamecore.api.util.manipulation.Immutable;
+import org.spongepowered.api.entity.Transform;
 import org.spongepowered.api.scoreboard.Team;
-import org.spongepowered.api.world.Location;
+import org.spongepowered.api.util.Identifiable;
 import org.spongepowered.api.world.extent.Extent;
+
+import java.util.Collection;
 
 import javax.annotation.Nonnull;
 
 /**
  * A location where a player can spawn for various stages of a game.
  */
-public interface ImmutableSpawnpoint<E extends Extent> extends Immutable<Spawnpoint> {
+public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint> {
 
-    /**
-     * Gets the {@link Location} of the spawnpoint.
-     *
-     * @return The location.
-     */
     @Nonnull
-    Location<E> getLocation();
+    Transform<? extends Extent> getTransform();
 
     /**
      * Gets the {@link SpawnpointType} for the spawnpoint.
@@ -62,7 +59,7 @@ public interface ImmutableSpawnpoint<E extends Extent> extends Immutable<Spawnpo
      * @return "
      */
     @Nonnull
-    ImmutableCollection<Team> getTeams();
+    Collection<Team> getTeams();
 
     boolean isActive();
 
