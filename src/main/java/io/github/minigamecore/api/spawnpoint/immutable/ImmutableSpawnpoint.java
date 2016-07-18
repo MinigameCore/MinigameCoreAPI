@@ -26,7 +26,7 @@
 package io.github.minigamecore.api.spawnpoint.immutable;
 
 import io.github.minigamecore.api.spawnpoint.Spawnpoint;
-import io.github.minigamecore.api.spawnpoint.SpawnpointType;
+import io.github.minigamecore.api.spawnpoint.spawnpointtype.SpawnpointType;
 import io.github.minigamecore.api.util.manipulation.Immutable;
 import org.spongepowered.api.entity.Transform;
 import org.spongepowered.api.scoreboard.Team;

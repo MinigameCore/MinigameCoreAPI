@@ -23,15 +23,28 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api.spawnpoint;
+package io.github.minigamecore.api.spawnpoint.spawnpointtype;
 
-import org.spongepowered.api.CatalogType;
-import org.spongepowered.api.util.annotation.CatalogedBy;
+import static org.spongepowered.api.util.generator.dummy.DummyObjectProvider.createFor;
 
-/**
- * .
- */
-@CatalogedBy(SpawnpointTypes.class)
-public interface SpawnpointType extends CatalogType {
+public final class SpawnpointTypes {
+
+    // SORTFIELDS:ON
+
+    public static final SpawnpointType DEATH = createFor(SpawnpointType.class, "DEATH");
+
+    public static final SpawnpointType GAME_SPAWN = createFor(SpawnpointType.class, "GAME_SPAWN");
+
+    public static final SpawnpointType LOBBY = createFor(SpawnpointType.class, "LOBBY");
+
+    public static final SpawnpointType RESPAWN = createFor(SpawnpointType.class, "RESPAWN");
+
+    public static final SpawnpointType SPECTATOR = createFor(SpawnpointType.class, "SPECTATOR");
+
+    // SORTFIELDS:OFF
+
+
+    private SpawnpointTypes() {
+    }
 
 }
