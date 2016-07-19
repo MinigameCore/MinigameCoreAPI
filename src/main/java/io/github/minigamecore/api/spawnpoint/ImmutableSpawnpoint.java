@@ -68,19 +68,19 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
 
         I build();
 
-        R setActive(boolean active);
+        R active(boolean active);
 
-        R setExtent(@Nonnull E extent);
+        R extent(@Nonnull E extent);
 
-        R setPosition(@Nonnull Vector3d position);
+        R position(@Nonnull Vector3d position);
 
-        R setRotation(@Nonnull Vector3d rotation);
+        R rotation(@Nonnull Vector3d rotation);
 
-        R setScale(@Nonnull Vector3d scale);
+        R scale(@Nonnull Vector3d scale);
 
-        R setSpawnpointType(@Nonnull SpawnpointType spawnpointType);
+        R spawnpointType(@Nonnull SpawnpointType spawnpointType);
 
-        R setTransform(@Nonnull Transform<E> transform);
+        R transform(@Nonnull Transform<E> transform);
 
     }
 
