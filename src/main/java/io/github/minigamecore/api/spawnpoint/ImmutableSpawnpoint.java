@@ -25,11 +25,13 @@
 
 package io.github.minigamecore.api.spawnpoint;
 
+import com.flowpowered.math.vector.Vector3d;
 import io.github.minigamecore.api.spawnpoint.spawnpointtype.SpawnpointType;
 import io.github.minigamecore.api.util.manipulation.Immutable;
 import org.spongepowered.api.entity.Transform;
 import org.spongepowered.api.scoreboard.Team;
 import org.spongepowered.api.util.Identifiable;
+import org.spongepowered.api.util.ResettableBuilder;
 import org.spongepowered.api.world.extent.Extent;
 
 import java.util.Collection;
@@ -61,5 +63,25 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
     Collection<Team> getTeams();
 
     boolean isActive();
+
+    interface Builder<E extends Extent, I extends ImmutableSpawnpoint, R extends ResettableBuilder<I,R>> extends ResettableBuilder<I,R> {
+
+        I build();
+
+        R setActive(boolean active);
+
+        R setExtent(@Nonnull E extent);
+
+        R setPosition(@Nonnull Vector3d position);
+
+        R setRotation(@Nonnull Vector3d rotation);
+
+        R setScale(@Nonnull Vector3d scale);
+
+        R setSpawnpointType(@Nonnull SpawnpointType spawnpointType);
+
+        R setTransform(@Nonnull Transform<E> transform);
+
+    }
 
 }
