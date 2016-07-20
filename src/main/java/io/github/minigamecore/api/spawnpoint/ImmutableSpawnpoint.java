@@ -76,10 +76,10 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
     SpawnpointType getSpawnpointType();
 
     /**
-     * Gets the {@link Team}s that can spawn at this spawnpoint.
+     * Gets an unmodifiable collection of {@link Team}s that can spawn at this spawnpoint.
      *
      * <p>
-     *     Remember this {@link Collection} is immutable. Any attempts to modify it will throw {@link UnsupportedOperationException}.
+     *     Any attempts to modify it will throw {@link UnsupportedOperationException}.
      * </p>
      *
      * @return The teams.

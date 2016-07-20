@@ -43,6 +43,10 @@ public interface SpawnpointType extends CatalogType {
     /**
      * Gets an unmodifiable collection of {@link EntityType}s that can spawn with the spawnpoint type.
      *
+     * <p>
+     *     Any attempts to modify it will throw {@link UnsupportedOperationException}.
+     * </p>
+     *
      * @return The {@link EntityType}s.
      */
     @Nonnull
