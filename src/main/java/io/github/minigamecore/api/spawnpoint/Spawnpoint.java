@@ -37,8 +37,11 @@ import java.util.Collection;
 import javax.annotation.Nonnull;
 
 /**
- * .
- * @param <E> .
+ * A location where a player can spawn for various stages of a game.
+ *
+ * <p>
+ *     This provides an {@link Mutable} instance.
+ * </p>
  */
 public interface Spawnpoint<E extends Extent> extends Identifiable, Mutable<ImmutableSpawnpoint> {
 
@@ -51,24 +54,58 @@ public interface Spawnpoint<E extends Extent> extends Identifiable, Mutable<Immu
     SpawnpointType getSpawnpointType();
 
     /**
-     * .
+     * Gets the {@link Team}s that can spawn at this spawnpoint.
      *
-     * @return "
+     * @return The teams.
      */
     @Nonnull
     Collection<Team> getTeams();
 
+    /**
+     * Gets the {@link Transform} applicable to the entity that spawns at the spawnpoint.
+     *
+     * @return The transform.
+     */
     @Nonnull
     Transform<E> getTransform();
 
+    /**
+     * Checks whether the spawnpoint is active or not.
+     *
+     * <p>
+     *     This can be used to have controlled spawning.
+     * </p>
+     *
+     * @return true if active; false otherwise
+     */
     boolean isActive();
 
+    /**
+     * Sets the status of the spawnpoint.
+     *
+     * @param active true if active; false otherwise.
+     */
     void setActive(boolean active);
 
+    /**
+     * Sets the {@link SpawnpointType} for the spawnpoint.
+     *
+     * @param spawnpointType The spawnpoint type.
+     */
     void setSpawnpointType(@Nonnull SpawnpointType spawnpointType);
 
+    /**
+     * Sets the {@link Team}s that can spawn at the spawnpoint.
+     *
+     * @param teams The teams.
+     */
     void setTeams(@Nonnull Collection<Team> teams);
 
+    /**
+     * Sets the {@link Transform} for the entity that spawns at the spawnpoint.
+     *
+     * @param transform The transform.
+     */
     void setTransform(Transform<E> transform);
 
 }

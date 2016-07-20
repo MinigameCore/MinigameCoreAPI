@@ -27,6 +27,11 @@ package io.github.minigamecore.api.spawnpoint.spawnpointtype;
 
 import static org.spongepowered.api.util.generator.dummy.DummyObjectProvider.createFor;
 
+import org.spongepowered.api.entity.living.player.Player;
+
+/**
+ * The {@link SpawnpointType} enumeration for {@link Player}s.
+ */
 public final class PlayerSpawnpointTypes {
 
     // SORTFIELDS:ON

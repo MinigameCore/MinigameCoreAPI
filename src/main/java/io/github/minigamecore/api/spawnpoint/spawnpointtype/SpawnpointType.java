@@ -25,13 +25,27 @@
 
 package io.github.minigamecore.api.spawnpoint.spawnpointtype;
 
+import io.github.minigamecore.api.spawnpoint.ImmutableSpawnpoint;
 import org.spongepowered.api.CatalogType;
+import org.spongepowered.api.entity.EntityType;
 import org.spongepowered.api.util.annotation.CatalogedBy;
 
+import java.util.Collection;
+
+import javax.annotation.Nonnull;
+
 /**
- * .
+ * Represents a type for an {@link ImmutableSpawnpoint}.
  */
-@CatalogedBy(PlayerSpawnpointTypes.class)
+@CatalogedBy({PlayerSpawnpointTypes.class})
 public interface SpawnpointType extends CatalogType {
+
+    /**
+     * Gets an unmodifiable collection of {@link EntityType}s that can spawn with the spawnpoint type.
+     *
+     * @return The {@link EntityType}s.
+     */
+    @Nonnull
+    Collection<EntityType> getApplicableEntityTypes();
 
 }
