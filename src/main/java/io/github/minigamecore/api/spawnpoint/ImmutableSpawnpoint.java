@@ -25,6 +25,8 @@
 
 package io.github.minigamecore.api.spawnpoint;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+import static java.util.Arrays.asList;
 import static org.spongepowered.api.Sponge.getRegistry;
 
 import io.github.minigamecore.api.spawnpoint.spawnpointtype.SpawnpointType;
@@ -65,7 +67,7 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
      * @return The transform.
      */
     @Nonnull
-    Transform<? extends Extent> getTransform();
+    <E extends Extent> Transform<E> getTransform();
 
     /**
      * Gets the {@link SpawnpointType} for the spawnpoint.
@@ -104,14 +106,6 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
     interface Builder extends ResettableBuilder<ImmutableSpawnpoint,Builder> {
 
         /**
-         * Builds an instance of a {@link ImmutableSpawnpoint}.
-         *
-         * @return A new instance of a {@link ImmutableSpawnpoint}
-         * @throws IllegalStateException if the {@link ImmutableSpawnpoint} is not complete
-         */
-        ImmutableSpawnpoint build() throws IllegalArgumentException;
-
-        /**
          * If the spawnpoint is active or not.
          *
          * @param active true if active; false otherwise.
@@ -120,12 +114,28 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
         Builder active(boolean active);
 
         /**
+         * Builds an instance of a {@link ImmutableSpawnpoint}.
+         *
+         * @return A new instance of a {@link ImmutableSpawnpoint}
+         * @throws IllegalStateException if the {@link ImmutableSpawnpoint} is not complete
+         */
+        ImmutableSpawnpoint build() throws IllegalArgumentException;
+
+        /**
          * The {@link SpawnpointType} for this spawnpoint.
          *
          * @param spawnpointType The spawnpoint type.
          * @return This builder.
          */
         Builder spawnpointType(@Nonnull SpawnpointType spawnpointType);
+
+        default Builder teams(@Nonnull Team[] teams) {
+            checkNotNull(teams, "teams");
+
+            return teams(asList(teams));
+        }
+
+        Builder teams(@Nonnull Collection<Team> teams);
 
         /**
          * The {@link Transform} for the spawning {@link Entity}.
