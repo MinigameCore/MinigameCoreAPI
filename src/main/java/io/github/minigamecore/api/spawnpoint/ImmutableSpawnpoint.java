@@ -67,7 +67,7 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
      * @return The transform.
      */
     @Nonnull
-    <E extends Extent> Transform<E> getTransform();
+    Transform<? extends Extent> getTransform();
 
     /**
      * Gets the {@link SpawnpointType} for the spawnpoint.
