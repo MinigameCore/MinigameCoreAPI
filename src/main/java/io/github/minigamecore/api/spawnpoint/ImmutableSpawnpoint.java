@@ -106,7 +106,7 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
     interface Builder extends ResettableBuilder<ImmutableSpawnpoint,Builder> {
 
         /**
-         * If the spawnpoint is active or not.
+         * Set if the spawnpoint is active or not.
          *
          * @param active true if active; false otherwise.
          * @return This builder.
@@ -129,12 +129,24 @@ public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint>
          */
         Builder spawnpointType(@Nonnull SpawnpointType spawnpointType);
 
+        /**
+         * Adds the teams that can spawn.
+         *
+         * @param teams The teams.
+         * @return This builder.
+         */
         default Builder teams(@Nonnull Team[] teams) {
             checkNotNull(teams, "teams");
 
             return teams(asList(teams));
         }
 
+        /**
+         * Adds the teams that can spawn.
+         *
+         * @param teams The teams.
+         * @return This builder.
+         */
         Builder teams(@Nonnull Collection<Team> teams);
 
         /**
