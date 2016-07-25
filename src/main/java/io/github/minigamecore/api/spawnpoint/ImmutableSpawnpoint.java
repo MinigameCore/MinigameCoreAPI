@@ -50,7 +50,7 @@ import javax.annotation.Nonnull;
  *     This provides an {@link Immutable} instance. If you want to manipulate, use the {@link #asMutable()} to get the {@link Mutable} variant.
  * </p>
  */
-public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint> {
+public interface ImmutableSpawnpoint extends Identifiable, Immutable<Spawnpoint<? extends Extent>> {
 
     /**
      * Creates a new {@link Builder} to build a {@link ImmutableSpawnpoint}.
