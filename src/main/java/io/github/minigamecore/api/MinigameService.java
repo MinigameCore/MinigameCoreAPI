@@ -29,6 +29,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 import com.google.inject.Injector;
 import com.google.inject.Module;
+import io.github.minigamecore.api.util.config.ConfigurationManager;
 import org.spongepowered.api.service.ServiceManager;
 
 import javax.annotation.Nonnull;
@@ -71,5 +72,8 @@ public interface MinigameService {
             registerChildInjector(module);
         }
     }
+
+    @Nonnull
+    ConfigurationManager getConfigurationManager();
 
 }

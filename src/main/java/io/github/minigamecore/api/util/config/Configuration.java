@@ -26,29 +26,68 @@
 package io.github.minigamecore.api.util.config;
 
 import static com.google.common.base.Preconditions.checkNotNull;
+import static java.nio.file.Files.createDirectories;
+import static java.nio.file.Files.notExists;
 
 import ninja.leaping.configurate.commented.CommentedConfigurationNode;
 import ninja.leaping.configurate.hocon.HoconConfigurationLoader;
 import ninja.leaping.configurate.loader.ConfigurationLoader;
+import org.spongepowered.api.asset.Asset;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.function.Supplier;
+import java.nio.file.Path;
+
+import javax.annotation.Nullable;
 
 /**
- *
+ * The configuration class.
  */
 public final class Configuration {
 
     private final ConfigurationLoader<CommentedConfigurationNode> loader;
+    private final Asset asset;
+
     private CommentedConfigurationNode node;
 
-    public Configuration(Supplier<HoconConfigurationLoader> loaderSupplier) {
-        checkNotNull(loaderSupplier, "configuration loader supplier");
-        this.loader = loaderSupplier.get();
+    public Configuration(File file) {
+        this(file.toPath(), null);
+    }
+
+    public Configuration(Path file) {
+        this(file, null);
+    }
+
+    public Configuration(File file, @Nullable Asset asset) {
+        this(file.toPath(), asset);
+    }
+
+    public Configuration(Path file, @Nullable Asset asset) {
+        checkNotNull(file, "file");
+
+        if (notExists(file)) {
+            if (notExists(file.getParent())) {
+                try {
+                    createDirectories(file.getParent());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        loader = HoconConfigurationLoader.builder().setPath(file).build();
+        this.asset = asset;
     }
 
     public void load() throws IOException {
         node = loader.load();
+        if (asset != null) {
+            try {
+                node.mergeValuesFrom(HoconConfigurationLoader.builder().setURL(asset.getUrl()).build().load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public CommentedConfigurationNode get() {
