@@ -26,9 +26,10 @@
 package io.github.minigamecore.api.minigame.arena;
 
 import io.github.minigamecore.api.minigame.Minigame;
+import io.github.minigamecore.api.minigame.MinigameState;
 import org.spongepowered.api.entity.living.player.Player;
 
-import java.util.List;
+import java.util.Collection;
 import java.util.UUID;
 
 /**
@@ -64,6 +65,23 @@ public interface Arena {
      * 
      * @return All players who are in the arena.
      */
-    List<UUID> getPlayers();
+    Collection<UUID> getPlayers();
+
+    /**
+     * Gets the current {@link MinigameState} of this arena.
+     * 
+     * @return The current {@link MinigameState} of this arena.
+     */
+    MinigameState getState();
+
+    /**
+     * Cycles the arena to the next {@link MinigameState}.
+     */
+    void nextState();
+
+    /**
+     * Resets the arena to the initial {@link MinigameState}.
+     */
+    void reset();
 
 }

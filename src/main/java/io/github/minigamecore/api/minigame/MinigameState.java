@@ -25,43 +25,25 @@
 
 package io.github.minigamecore.api.minigame;
 
-import io.github.minigamecore.api.data.DataManager;
-import io.github.minigamecore.api.minigame.arena.Arena;
-
-import java.util.SortedMap;
+import org.spongepowered.api.CatalogType;
 
 /**
- * Contains logic used to run {@link Arena}s. Each minigame can have multiple
- * {@link Arena}s using it.
+ * Represents a state of a {@link Minigame}.
  */
-public interface Minigame extends DataManager {
+public interface MinigameState extends CatalogType {
 
     /**
-     * Gets all possible states of the minigame. The states are ordered
-     * ascending by their key.
+     * Gets the runnable the state will use on execution.
      * 
-     * @return All possible states of the minigame
+     * @return The runnable the state will use on execution.
      */
-    SortedMap<Integer, MinigameState> getStates();
+    Runnable getRunnable();
 
     /**
-     * Gets the intial state of the minigame. May return null if no states are
-     * present.
-     * 
-     * @return The initial state of the minigame.
+     * Executes the runnable of this state.
      */
-    default MinigameState getInitialState() {
-        return getStates().get(getStates().firstKey());
+    default void execute() {
+        getRunnable().run();
     }
-
-    /**
-     * Gets the final state of the minigame. May return null if no states are
-     * present.
-     * 
-     * @return The final state of the minigame.
-     */
-    default MinigameState getFinalState() {
-        return getStates().get(getStates().lastKey());
-    }
-
+    
 }
