@@ -23,38 +23,51 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api;
+package io.github.minigamecore.api.util.manager;
 
-import io.github.minigamecore.api.util.config.ConfigurationManager;
-import io.github.minigamecore.api.util.manager.GuiceManager;
-import org.spongepowered.api.service.ServiceManager;
+import static com.google.common.base.Preconditions.checkNotNull;
+
+import com.google.inject.Injector;
+import com.google.inject.Module;
 
 import javax.annotation.Nonnull;
 
 /**
- * The main service provided by MinigameCore.
+ * The guice manager.
  *
  * <p>
- *     This service is guaranteed to be present if the MinigameCore plugin is active. Therefore {@link ServiceManager#provideUnchecked(Class)} can be
- *     safely used. {@link MinigameService} can also be injected.
+ *     This can be used register guice {@link Module}s and use the bindings.
  * </p>
  */
-public interface MinigameService {
+public interface GuiceManager {
 
     /**
-     * Gets the {@link ConfigurationManager}.
+     * Gets the {@link Injector} with extra mappings for MinigameCore.
      *
-     * @return The ConfigurationManager.
+     * @return The injector.
      */
     @Nonnull
-    ConfigurationManager getConfigurationManager();
+    Injector getInjector();
 
     /**
-     * Gets the {@link ConfigurationManager}.
+     * Registers the guice {@link Module} for the MinigameCore injector.
      *
-     * @return The ConfigurationManager.
+     * @param module The guice {@link Module}.
      */
-    @Nonnull
-    GuiceManager getGuiceManager();
+    void registerChildInjector(@Nonnull Module module);
+
+    /**
+     * Registers the guice {@link Module}s for the MinigameCore injector.
+     *
+     * @param modules The guice modules to register.
+     * @see #registerChildInjector(Module)
+     */
+    default void registerChildInjector(@Nonnull Module[] modules) {
+        checkNotNull(modules, "modules");
+
+        for (Module module: modules) {
+            registerChildInjector(module);
+        }
+    }
 
 }
