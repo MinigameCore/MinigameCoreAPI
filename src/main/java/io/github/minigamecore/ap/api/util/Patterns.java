@@ -35,8 +35,8 @@ public final class Patterns {
 
     public static final Pattern MINIGAME_MODULE_ID = Pattern.compile("[a-z][a-z0-9-_]{0,63}");
     public static final Pattern MINIGAME_MODULE_VERSION =  Pattern.compile("(([0-9]{1,4})\\.){2}([0-9]{1,4})");
-    public static final Pattern MINIGAME_MODULE_VERSION_RANGE = Pattern.compile("([\\[|\\(])?(" + MINIGAME_MODULE_VERSION + ")?(,)?("
-            + MINIGAME_MODULE_VERSION + ")?(\\[|\\))?");
+    public static final Pattern MINIGAME_MODULE_VERSION_RANGE = Pattern.compile("([\\[|\\(])(" + MINIGAME_MODULE_VERSION + ")?(,)?("
+            + MINIGAME_MODULE_VERSION + ")?(\\[|\\))");
 
     private Patterns() {
     }
