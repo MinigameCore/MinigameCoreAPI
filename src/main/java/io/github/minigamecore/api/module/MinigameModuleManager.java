@@ -25,8 +25,8 @@
 
 package io.github.minigamecore.api.module;
 
-import com.sun.webkit.plugin.Plugin;
 import org.slf4j.Logger;
+import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.plugin.PluginContainer;
 
 import java.util.Collection;
