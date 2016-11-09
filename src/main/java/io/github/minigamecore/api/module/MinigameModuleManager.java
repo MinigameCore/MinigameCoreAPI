@@ -33,6 +33,8 @@ import java.util.Collection;
 import java.util.Map;
 import java.util.Optional;
 
+import javax.annotation.Nonnull;
+
 /**
  * The manager that manages plugins. This manager can retrieve
  * {@link MinigameModuleContainer}s from {@link MinigameModule} instances,
@@ -46,6 +48,7 @@ public interface MinigameModuleManager {
      * @param instance The instance.
      * @return The container.
      */
+    @Nonnull
     Optional<MinigameModuleContainer> fromInstance(Object instance);
 
     /**
@@ -54,6 +57,7 @@ public interface MinigameModuleManager {
      * @param id The plugin ID.
      * @return The plugin, if available, {@link Optional#empty()} otherwise.
      */
+    @Nonnull
     Optional<MinigameModuleContainer> getMinigameModule(String id);
 
     /**
@@ -63,6 +67,7 @@ public interface MinigameModuleManager {
      * @param id The plugin ID.
      * @return The minigame modules for the plugin.
      */
+    @Nonnull
     Collection<MinigameModuleContainer> getMinigameModules(String id);
 
     /**
@@ -72,6 +77,7 @@ public interface MinigameModuleManager {
      * @param container The plugin container.
      * @return The minigame modules for the plugin.
      */
+    @Nonnull
     Collection<MinigameModuleContainer> getMinigameModules(PluginContainer container);
 
     /**
@@ -79,6 +85,7 @@ public interface MinigameModuleManager {
      *
      * @return The minigame modules.
      */
+    @Nonnull
     Collection<MinigameModuleContainer> getMinigameModules();
 
     /**
@@ -87,6 +94,7 @@ public interface MinigameModuleManager {
      *
      * @return The minigame modules.
      */
+    @Nonnull
     Map<PluginContainer, Collection<MinigameModuleContainer>> getMinigameModulesMap();
 
     /**
