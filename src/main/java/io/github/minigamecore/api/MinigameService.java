@@ -25,6 +25,7 @@
 
 package io.github.minigamecore.api;
 
+import io.github.minigamecore.api.module.MinigameModuleManager;
 import io.github.minigamecore.api.util.config.ConfigurationManager;
 import io.github.minigamecore.api.util.manager.GuiceManager;
 import org.spongepowered.api.service.ServiceManager;
@@ -56,5 +57,12 @@ public interface MinigameService {
      */
     @Nonnull
     GuiceManager getGuiceManager();
+
+    /**
+     * Gets the {@link MinigameModuleManager}.
+     *
+     * @return The MinigameModuleManager.
+     */
+    MinigameModuleManager getMinigameModuleManager();
 
 }
