@@ -23,47 +23,22 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api;
+package io.github.minigamecore.ap.api.util;
 
-import io.github.minigamecore.api.module.MinigameModuleManager;
-import io.github.minigamecore.api.util.config.ConfigurationManager;
-import io.github.minigamecore.api.util.manager.GuiceManager;
-import org.spongepowered.api.service.ServiceManager;
-
-import javax.annotation.Nonnull;
+import java.util.regex.Pattern;
 
 /**
- * The main service provided by MinigameCore.
- *
- * <p>
- *     This service is guaranteed to be present if the MinigameCore plugin is active. Therefore {@link ServiceManager#provideUnchecked(Class)} can be
- *     safely used. {@link MinigameService} can also be injected.
- * </p>
+ * The regex patterns for various annotation processors.
  */
-public interface MinigameService {
+@SuppressWarnings({"WeakerAccess", "unused"})
+public final class Patterns {
 
-    /**
-     * Gets the {@link ConfigurationManager}.
-     *
-     * @return The ConfigurationManager.
-     */
-    @Nonnull
-    ConfigurationManager getConfigurationManager();
+    public static final Pattern MINIGAME_MODULE_ID = Pattern.compile("[a-z][a-z0-9-_]{0,63}");
+    public static final Pattern MINIGAME_MODULE_VERSION =  Pattern.compile("(([0-9]{1,4})\\.){2}([0-9]{1,4})");
+    public static final Pattern MINIGAME_MODULE_VERSION_RANGE = Pattern.compile("([\\[|\\(])(" + MINIGAME_MODULE_VERSION + ")?(,)("
+            + MINIGAME_MODULE_VERSION + ")?(\\[|\\))");
 
-    /**
-     * Gets the {@link ConfigurationManager}.
-     *
-     * @return The ConfigurationManager.
-     */
-    @Nonnull
-    GuiceManager getGuiceManager();
-
-    /**
-     * Gets the {@link MinigameModuleManager}.
-     *
-     * @return The MinigameModuleManager.
-     */
-    @Nonnull
-    MinigameModuleManager getMinigameModuleManager();
+    private Patterns() {
+    }
 
 }

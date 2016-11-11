@@ -23,47 +23,21 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api;
+package io.github.minigamecore.api.event.module;
 
-import io.github.minigamecore.api.module.MinigameModuleManager;
-import io.github.minigamecore.api.util.config.ConfigurationManager;
-import io.github.minigamecore.api.util.manager.GuiceManager;
-import org.spongepowered.api.service.ServiceManager;
-
-import javax.annotation.Nonnull;
+import io.github.minigamecore.api.module.phase.MinigameModuleLifecycle;
+import org.spongepowered.api.event.Event;
+import org.spongepowered.api.event.game.state.GameStoppingEvent;
 
 /**
- * The main service provided by MinigameCore.
+ * Event fired after {@link MinigameModuleLifecycle#PLATFORM_STOPPING} to
+ * indicate that Minigame Core has finished its work.
  *
  * <p>
- *     This service is guaranteed to be present if the MinigameCore plugin is active. Therefore {@link ServiceManager#provideUnchecked(Class)} can be
- *     safely used. {@link MinigameService} can also be injected.
+ *     This is where plugins should do their non minigame shutdown steps,
+ *     instead of {@link GameStoppingEvent}.
  * </p>
  */
-public interface MinigameService {
-
-    /**
-     * Gets the {@link ConfigurationManager}.
-     *
-     * @return The ConfigurationManager.
-     */
-    @Nonnull
-    ConfigurationManager getConfigurationManager();
-
-    /**
-     * Gets the {@link ConfigurationManager}.
-     *
-     * @return The ConfigurationManager.
-     */
-    @Nonnull
-    GuiceManager getGuiceManager();
-
-    /**
-     * Gets the {@link MinigameModuleManager}.
-     *
-     * @return The MinigameModuleManager.
-     */
-    @Nonnull
-    MinigameModuleManager getMinigameModuleManager();
+public interface PlatformStoppedEvent extends Event {
 
 }

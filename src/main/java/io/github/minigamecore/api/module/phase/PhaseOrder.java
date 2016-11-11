@@ -23,47 +23,18 @@
  * THE SOFTWARE.
  */
 
-package io.github.minigamecore.api;
-
-import io.github.minigamecore.api.module.MinigameModuleManager;
-import io.github.minigamecore.api.util.config.ConfigurationManager;
-import io.github.minigamecore.api.util.manager.GuiceManager;
-import org.spongepowered.api.service.ServiceManager;
-
-import javax.annotation.Nonnull;
+package io.github.minigamecore.api.module.phase;
 
 /**
- * The main service provided by MinigameCore.
- *
- * <p>
- *     This service is guaranteed to be present if the MinigameCore plugin is active. Therefore {@link ServiceManager#provideUnchecked(Class)} can be
- *     safely used. {@link MinigameService} can also be injected.
- * </p>
+ * Order that {@link Lifecycle} methods may be called.
  */
-public interface MinigameService {
+@SuppressWarnings({"unused", "WeakerAccess"})
+public enum PhaseOrder {
 
-    /**
-     * Gets the {@link ConfigurationManager}.
-     *
-     * @return The ConfigurationManager.
-     */
-    @Nonnull
-    ConfigurationManager getConfigurationManager();
-
-    /**
-     * Gets the {@link ConfigurationManager}.
-     *
-     * @return The ConfigurationManager.
-     */
-    @Nonnull
-    GuiceManager getGuiceManager();
-
-    /**
-     * Gets the {@link MinigameModuleManager}.
-     *
-     * @return The MinigameModuleManager.
-     */
-    @Nonnull
-    MinigameModuleManager getMinigameModuleManager();
+    FIRST,
+    EARLY,
+    NORMAL,
+    LATE,
+    LAST
 
 }
