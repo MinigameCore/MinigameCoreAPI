@@ -47,8 +47,7 @@ public @interface MinigameModule {
     Pattern PLUGIN_ID_PATTERN = Plugin.ID_PATTERN;
 
     /**
-     * The description of the minigame module, explaining what it can be used
-     * for.
+     * The description of the minigame module, explaining what it is.
      *
      * @return The minigame module description, or an empty string if unknown.
      */

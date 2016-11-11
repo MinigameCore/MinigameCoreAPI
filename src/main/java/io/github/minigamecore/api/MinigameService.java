@@ -63,6 +63,7 @@ public interface MinigameService {
      *
      * @return The MinigameModuleManager.
      */
+    @Nonnull
     MinigameModuleManager getMinigameModuleManager();
 
 }

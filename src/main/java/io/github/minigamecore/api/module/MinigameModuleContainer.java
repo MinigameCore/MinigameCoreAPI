@@ -33,6 +33,8 @@ import org.spongepowered.api.plugin.PluginContainer;
 
 import java.util.Optional;
 
+import javax.annotation.Nonnull;
+
 /**
  * A wrapper around a class marked with an {@link MinigameModule} annotation to retrieve
  * information from the annotation for easier use.
@@ -52,6 +54,7 @@ public interface MinigameModuleContainer {
      * @param name Name of asset.
      * @return Asset if present, {@link Optional#empty()} otherwise.
      */
+    @Nonnull
     default Optional<Asset> getAsset(String name) {
         return Optional.empty();
     }
@@ -62,6 +65,7 @@ public interface MinigameModuleContainer {
      * @return The plugin description, or {@link Optional#empty()} if unknown.
      * @see MinigameModule#description()
      */
+    @Nonnull
     default Optional<String> getDescription() {
         return Optional.empty();
     }
@@ -72,6 +76,7 @@ public interface MinigameModuleContainer {
      * @return The minigame module ID.
      * @see MinigameModule#id()
      */
+    @Nonnull
     String getId();
 
     /**
@@ -79,6 +84,7 @@ public interface MinigameModuleContainer {
      *
      * @return The instance if available, {@link Optional#empty()} otherwise.
      */
+    @Nonnull
     default Optional<?> getInstance() {
         return Optional.empty();
     }
@@ -88,6 +94,7 @@ public interface MinigameModuleContainer {
      *
      * @return The assigned logger.
      */
+    @Nonnull
     default Logger getLogger() {
         return LoggerFactory.getLogger(getPluginOwner().getId() + "|" + getId());
     }
@@ -98,6 +105,7 @@ public interface MinigameModuleContainer {
      * @return The minigame module name, or {@link #getId()} if unknown.
      * @see MinigameModule#name()
      */
+    @Nonnull
     default String getName() {
         return getId();
     }
@@ -107,6 +115,7 @@ public interface MinigameModuleContainer {
      *
      * @return The plugin container.
      */
+    @Nonnull
     PluginContainer getPluginOwner();
 
     /**
@@ -116,6 +125,7 @@ public interface MinigameModuleContainer {
      *         unknown.
      * @see MinigameModule#version()
      */
+    @Nonnull
     String getVersion();
 
 }

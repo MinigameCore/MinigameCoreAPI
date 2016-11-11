@@ -54,21 +54,21 @@ public interface MinigameModuleManager {
     /**
      * Retrieves a {@link MinigameModuleContainer} based on its ID.
      *
-     * @param id The plugin ID.
+     * @param plugin The plugin ID.
      * @return The plugin, if available, {@link Optional#empty()} otherwise.
      */
     @Nonnull
-    Optional<MinigameModuleContainer> getMinigameModule(String id);
+    Optional<MinigameModuleContainer> getMinigameModule(String plugin);
 
     /**
      * Gets a {@link Collection} of all {@link MinigameModule} by the
      * {@link Plugin} ID.
      *
-     * @param id The plugin ID.
+     * @param plugin The plugin ID.
      * @return The minigame modules for the plugin.
      */
     @Nonnull
-    Collection<MinigameModuleContainer> getMinigameModules(String id);
+    Collection<MinigameModuleContainer> getMinigameModules(String plugin);
 
     /**
      * Gets a {@link Collection} of all {@link MinigameModule} by the
@@ -100,9 +100,9 @@ public interface MinigameModuleManager {
     /**
      * Checks if a minigame module is loaded based on its ID.
      *
-     * @param id the id of the {@link MinigameModule}.
+     * @param minigameModule the id of the {@link MinigameModule}.
      * @return {@code true} if loaded, {@code false} if not loaded.
      */
-    boolean isLoaded(String id);
+    boolean isLoaded(String minigameModule);
 
 }
